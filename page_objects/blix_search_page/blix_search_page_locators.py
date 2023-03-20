@@ -15,5 +15,5 @@ class BlixSearchPageLocators:
     PRODUCTS_SECTION = (By.CSS_SELECTOR, ".section-vc__items--products")
     PRODUCT_CONTAINER = (By.CSS_SELECTOR, ".section__item.similar-product")
     PRODUCT_EXPAND_BUTTON = (By.CSS_SELECTOR, "section.sortable button.button.expand-section")
-    PRODUCT_NAME = (By.CSS_SELECTOR, "div.section__item.similar-product:nth-of-type({row}) h6.similar-product__name")
+    PRODUCT_NAME = (By.CSS_SELECTOR, "div.section__item.similar-product:nth-of-type({row}) h6.similar-product__name > a")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "div.section__item.similar-product:nth-of-type({row}) span.similar-product__price")

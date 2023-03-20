@@ -9,4 +9,8 @@ class BlixProductPage(AbsBasePage):
                                                     timeout=timeout)
 
     def is_page_displayed(self):
-        self.is_element_located_displayed(Loc.PRODUCT_NAME)
+        return self.is_element_located_displayed(Loc.PRODUCT_NAME)
+
+    def get_leaflet_origin_url(self):
+        element = self.driver.find_element(*Loc.PRODUCT_NAME)
+        return element.get_attribute("href")

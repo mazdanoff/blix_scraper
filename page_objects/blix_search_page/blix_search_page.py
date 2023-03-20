@@ -1,3 +1,5 @@
+from selenium.webdriver.remote.webelement import WebElement
+
 from page_objects.abstract.abs_base_page import AbsBasePage
 from web_elements.button import Button
 from web_elements.text import Text
@@ -32,10 +34,20 @@ class BlixSearchPage(AbsBasePage):
     def is_page_displayed(self):
         return self.is_element_located_displayed(self.leaflet_list.get_headers_locator())
 
-    def expand_lists(self):
-        buttons = (self.leaflet_expand_button, self.product_expand_button)
-        for button in buttons:
-            if button.element.get_attribute("disabled") is None:
-                # enabled button has no 'disabled' attribute
-                self.scroll_into_view(button.element)
-                button.click()
+    def expand_leaflet_list(self):
+        button = self.leaflet_expand_button.element
+        if self._is_button_enabled(button):
+            self.scroll_into_view(button)
+            button.click()
+        self.scroll_into_view(self.leaflet_list[len(self.leaflet_list)-1].store)
+
+    def expand_product_list(self):
+        button = self.product_expand_button.element
+        if self._is_button_enabled(button):
+            self.scroll_into_view(button)
+            button.click()
+
+    @staticmethod
+    def _is_button_enabled(button: WebElement):
+        # enabled button has no 'disabled' attribute
+        return button.get_attribute("disabled") is None
