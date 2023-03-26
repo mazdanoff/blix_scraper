@@ -9,3 +9,7 @@ class Link(Element):
     @property
     def text(self):
         return self.element.text
+
+    @property
+    def link(self):
+        return self.element.get_attribute("href")

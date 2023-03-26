@@ -20,11 +20,11 @@ class BlixSearchPage(AbsBasePage):
 
     @property
     def leaflet_count(self):
-        return int(self._leaflet_count.value)
+        return int(self._leaflet_count.text)
 
     @property
     def product_count(self):
-        return int(self._product_count.value)
+        return int(self._product_count.text)
 
     def wait_for_page_to_load(self, timeout: int = 30):
         self.wait_for_visibility_of_element_located(

@@ -4,5 +4,5 @@ from web_elements.element import Element
 class Text(Element):
 
     @property
-    def value(self):
+    def text(self):
         return self.element.text
