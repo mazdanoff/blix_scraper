@@ -1,3 +1,2 @@
-/tests/geckodriver.log
-/scripts/geckodriver.log
+**/geckodriver.log
 /screenshots
