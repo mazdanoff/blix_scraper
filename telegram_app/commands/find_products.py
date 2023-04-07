@@ -8,8 +8,8 @@ from telegram_app.get_sales import get_sales
 
 async def find_products(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = await context.bot.send_message(chat_id=update.effective_chat.id,
-                                         text=f'Searching Blix for {" ".join(context.args)}...')
-    phrase = "-".join(context.args)
+                                         text=f'Searching Blix for {update.message.text.lower()}...')
+    phrase = update.message.text.replace(" ", "-").lower()
     try:
         with Driver() as driver:
             for sale in get_sales(driver, phrase):
